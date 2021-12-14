@@ -1,41 +1,21 @@
-# cordova-plugin-zip
+# cordova-plugin-zip (fork)
 
-A Cordova plugin to unzip files in Android and iOS.
+This is a fork of `cordova-plugin-zip` by [Moodle HQ](https://moodle.com/). If you are looking for the documentation, you can read the original at [MobileChromeApps/cordova-plugin-zip](https://github.com/MobileChromeApps/cordova-plugin-zip).
+
+## Modifications from the original
+
+We created this fork because we needed to include the following modifications in [our mobile application](https://github.com/moodlehq/moodleapp):
+
+| PR | Description |
+| -- | ----------- |
+| [#92](https://github.com/MobileChromeApps/cordova-plugin-zip/pull/92) | Handle zip traversal vulnerability. Used a slightly different fix. |
+
+You can see all the changes here: [3.1.0...moodlemobile:v3.1.0-moodle.1](https://github.com/MobileChromeApps/cordova-plugin-zip/compare/3.1.0...moodlemobile:v3.1.0-moodle.1)
 
 ## Installation
 
-    cordova plugin add cordova-plugin-zip
+You can install this package using the [original installation instructions](https://github.com/MobileChromeApps/cordova-plugin-zip#installation), but installing this package instead:
 
-## Usage
-
-    zip.unzip(<source zip>, <destination dir>, <callback>, [<progressCallback>]);
-
-Both source and destination arguments can be URLs obtained from the HTML File
-interface or absolute paths to files on the device.
-
-The callback argument will be executed when the unzip is complete, or when an
-error occurs. It will be called with a single argument, which will be 0 on
-success, or -1 on failure.
-
-The progressCallback argument is optional and will be executed whenever a new ZipEntry
-has been extracted. E.g.:
-
-    var progressCallback = function(progressEvent) {
-        $( "#progressbar" ).progressbar("value", Math.round((progressEvent.loaded / progressEvent.total) * 100));
-    };
-
-The values `loaded` and `total` are the number of compressed bytes processed and total. Total is the
-file size of the zip file.
-
-## Release Notes
-
-### 3.1.0 (Feb 23, 2016)
-* Updated SSZipArchive (ios lib) to 1.1
-
-### 3.0.0 (May 1, 2015)
-* Updated SSZipArchive (ios lib) to 0.2.1
-* Update file plugin dependency to use npm version (cordova-plugin-file)
-
-### 2.1.0 (May 1, 2014)
-* Added progress events
-* Fix iOS path handling when given file: URLs as src/target
+```sh
+cordova plugin add @moodlehq/cordova-plugin-zip@3.1.0-moodle.1
+```
